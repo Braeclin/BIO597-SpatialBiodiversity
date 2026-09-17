@@ -24,5 +24,9 @@ hide:
 | [Week 14 (12/11)](week-14.md) | Spatial machine learning and model evaluation | scikit-learn, GeoPandas, NumPy | Compare random and spatial cross-validation |
 | [Week 15 (12/18)](week-15.md) | Synthesis: biodiversity under environmental change | Full stack | Final project presentations |
 
+
+
 ??? note "Course topic scratch pad"
+    Look at [elapid](https://github.com/earth-chris/elapid), a Python SDM package  
+    Add gradient forest somewhere mid-semester  
     [scratch pad](_scratch_pad.md)

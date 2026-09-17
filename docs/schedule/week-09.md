@@ -1,32 +1,29 @@
-# Week 9: Species Distribution Modeling
+# Week 9: Vector Spatial Analysis
 
 ## Core Questions
 
-- What does a species distribution model estimate?
-- How do presence/absence, presence/background, and pseudoabsence designs differ?
-- Why might logistic regression and random forests produce different suitability maps?
+- How can vector operations answer ecological and conservation questions?
+- Which observations fall inside protected areas, watersheds, or habitat polygons?
+- How do buffers, intersections, and spatial joins change the unit of analysis?
 
 ## Concepts
 
-- Species-environment relationships.
-- Presence/absence, presence/background, and pseudoabsence data.
-- Logistic regression.
-- Random forests.
-- Habitat suitability.
-- Prediction versus inference.
-- Model evaluation and thresholding.
+- Spatial joins.
+- Intersection, union, and difference.
+- Buffers.
+- Nearest-neighbor operations.
+- Point-in-polygon analysis.
+- Distance matrices.
 
 ## Python Tools
 
-- scikit-learn.
-- rasterio or rioxarray.
-- pandas.
-- matplotlib.
+- GeoPandas.
+- Shapely.
 
 ## Applied Lab
 
-Students combine occurrence data, climate, elevation, and land cover covariates to fit logistic regression and random forest models, then compare predicted suitability rasters.
+Using species observations, protected areas, watersheds, roads, and habitat polygons, students ask which observations occur inside protected areas, how many species occur within 500 m of a road, and which sampling locations fall within each watershed.
 
 ## Deliverable
 
-Submit a first species distribution model with methods, evaluation metrics, prediction maps, and a comparison of model behavior.
+Submit a vector spatial analysis report with maps, code, and short interpretations for at least three spatial questions.
