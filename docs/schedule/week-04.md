@@ -1,30 +1,29 @@
-# Week 4: Raster Data and Environmental Covariates
+# Week 4: Vector Spatial Analysis
 
 ## Core Questions
 
-- How do rasters represent environmental variation?
-- How do resolution, extent, alignment, and NoData values affect biodiversity analysis?
-- Which environmental covariates are biologically meaningful for a study system?
+- How can vector operations answer ecological and conservation questions?
+- Which observations fall inside protected areas, watersheds, or habitat polygons?
+- How do buffers, intersections, and spatial joins change the unit of analysis?
 
 ## Concepts
 
-- Raster versus vector data.
-- Cells, pixels, resolution, extent, and NoData.
-- Raster alignment and extraction.
-- Elevation, climate, land cover, remote sensing, terrain, and microclimate.
-- Temporal alignment and ecological interpretation of predictors.
+- Spatial joins.
+- Intersection, union, and difference.
+- Buffers.
+- Nearest-neighbor operations.
+- Point-in-polygon analysis.
+- Distance matrices.
 
 ## Python Tools
 
-- rasterio.
-- rioxarray.
-- xarray.
-- NumPy.
+- GeoPandas.
+- Shapely.
 
 ## Applied Lab
 
-Students extract elevation, temperature, precipitation, slope, and land cover values at species occurrence locations, producing an analysis table that combines species, coordinates, and environmental covariates.
+Using species observations, protected areas, watersheds, roads, and habitat polygons, students ask which observations occur inside protected areas, how many species occur within 500 m of a road, and which sampling locations fall within each watershed.
 
 ## Deliverable
 
-Submit a predictor inventory table with source, temporal coverage, resolution, units, ecological justification, and preprocessing notes.
+Submit a vector spatial analysis report with maps, code, and short interpretations for at least three spatial questions.

@@ -1,32 +1,30 @@
-# Week 5: Species Distribution Modeling
+# Week 5: Raster Data and Environmental Covariates
 
 ## Core Questions
 
-- What does a species distribution model estimate?
-- How do presence/absence, presence/background, and pseudoabsence designs differ?
-- Why might logistic regression and random forests produce different suitability maps?
+- How do rasters represent environmental variation?
+- How do resolution, extent, alignment, and NoData values affect biodiversity analysis?
+- Which environmental covariates are biologically meaningful for a study system?
 
 ## Concepts
 
-- Species-environment relationships.
-- Presence/absence, presence/background, and pseudoabsence data.
-- Logistic regression.
-- Random forests.
-- Habitat suitability.
-- Prediction versus inference.
-- Model evaluation and thresholding.
+- Raster versus vector data.
+- Cells, pixels, resolution, extent, and NoData.
+- Raster alignment and extraction.
+- Elevation, climate, land cover, remote sensing, terrain, and microclimate.
+- Temporal alignment and ecological interpretation of predictors.
 
 ## Python Tools
 
-- scikit-learn.
-- rasterio or rioxarray.
-- pandas.
-- matplotlib.
+- rasterio.
+- rioxarray.
+- xarray.
+- NumPy.
 
 ## Applied Lab
 
-Students combine occurrence data, climate, elevation, and land cover covariates to fit logistic regression and random forest models, then compare predicted suitability rasters.
+Students extract elevation, temperature, precipitation, slope, and land cover values at species occurrence locations, producing an analysis table that combines species, coordinates, and environmental covariates.
 
 ## Deliverable
 
-Submit a first species distribution model with methods, evaluation metrics, prediction maps, and a comparison of model behavior.
+Submit a predictor inventory table with source, temporal coverage, resolution, units, ecological justification, and preprocessing notes.

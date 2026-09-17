@@ -1,29 +1,32 @@
-# Week 9: Vector Spatial Analysis
+# Week 9: Spatial Sampling and Sampling Bias
 
 ## Core Questions
 
-- How can vector operations answer ecological and conservation questions?
-- Which observations fall inside protected areas, watersheds, or habitat polygons?
-- How do buffers, intersections, and spatial joins change the unit of analysis?
+- How does spatial sampling bias influence estimates of biodiversity?
+- How do random, stratified, systematic, clustered, and thinned samples differ?
+- Why are rare species and spatial pseudoreplication especially difficult?
 
 ## Concepts
 
-- Spatial joins.
-- Intersection, union, and difference.
-- Buffers.
-- Nearest-neighbor operations.
-- Point-in-polygon analysis.
-- Distance matrices.
+- Random, stratified, and systematic sampling.
+- Spatial clustering.
+- Sampling effort and accessibility bias.
+- Spatial thinning.
+- Rare species.
+- Pseudoreplication.
+- Background and pseudoabsence sampling.
 
 ## Python Tools
 
 - GeoPandas.
-- Shapely.
+- NumPy.
+- scikit-learn.
+- scipy.
 
 ## Applied Lab
 
-Using species observations, protected areas, watersheds, roads, and habitat polygons, students ask which observations occur inside protected areas, how many species occur within 500 m of a road, and which sampling locations fall within each watershed.
+Students compare raw observations, spatially thinned observations, and stratified samples from a biased occurrence dataset, then evaluate how each sampling strategy changes species richness and model-ready data.
 
 ## Deliverable
 
-Submit a vector spatial analysis report with maps, code, and short interpretations for at least three spatial questions.
+Submit a sampling-bias analysis with maps, summary statistics, and a short recommendation for the final project sampling strategy.
