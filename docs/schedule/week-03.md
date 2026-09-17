@@ -5,7 +5,9 @@
 We will join first for this symposium from 10-11:15 or so, and then reconvene at 11:30
 at the [usual class zoom link](https://maine.zoom.us/j/81375585733?pwd=mkyUtpLIJM4dv5m9b1cZkpUsqmmlNt.1).
 
-## Icebreaker: What is something you enjoy doing when you are not doing science?
+## Icebreaker
+
+What is something you enjoy doing when you are not doing science?
 
 ## Introductory business
 
@@ -30,7 +32,7 @@ and pull the latest version of the class github repository.
     git push
     ```
 
-- Review Assignment-02-pygbif
+* Review Assignment-02-pygbif.ipynb
 
 
 ## Paper discussion
@@ -66,6 +68,9 @@ coordinates, obvious spatial outliers, coordinate uncertainty, and duplicate
 specimens or observations.
 
 ## Assignment
+
+**Remember:** Next week Isaac will be in Baton Rouge. We will almost certainly
+still have class but it will probably only be the first 2 hours. More to come...
 
 Complete and submit this assignment, including a data cleaning report with raw 
 and filtered maps, a table of filtering decisions, and a short explanation of
