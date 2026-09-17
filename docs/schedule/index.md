@@ -14,7 +14,7 @@ hide:
 | [Week 4 (09/25)](week-04.md) | Vector spatial analysis | GeoPandas, Shapely | Buffers, intersections, spatial joins |
 | [Week 5 (10/02)](week-05.md) | Raster data and environmental covariates | rasterio, rioxarray, xarray, NumPy | Extract climate, elevation, and land cover |
 | [Week 6 (10/09)](week-06.md) | Species distribution modeling (Random Forest) | scikit-learn, rasterio, pandas | Build a first SDM from scratch w/ ML |
-| [Week 7 (10/16)](week-07.md) | Exploring SDM software | | Running 'production grade' SDMs | Build and compare distribution models |
+| [Week 7 (10/16)](week-07.md) | Exploring SDM software | Running 'production grade' SDMs | Build and compare distribution models |
 | [Week 8 (10/23)](week-08.md) | SDM predictions in space and time | | Projecting a fitted SDM to future climate conditions |
 | [Week 9 (10/30)](week-08.md) | Spatial autocorrelation | libpysal, esda, GeoPandas | Calculate global and local Moran's I |
 | [Week 10 (11/06)](week-10.md) | Spatial interpolation and prediction | scipy, scikit-learn, optionally gstools | Predict an environmental or ecological surface |
