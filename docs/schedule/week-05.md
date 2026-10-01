@@ -13,7 +13,9 @@ Are there any foods you disliked as a child, but love (or at least tolerate) now
 
 # Lab Exercise: Raster Data and Environmental Covariates
 
-* The usual intro update exercise: Go to your [JupyterHub](https://maine.cloudbank.2i2c.cloud/)
+* [First, a brief lecture on raster data and environmental covariates](../lectures/Lecture05-RasterData.html)
+
+* Next, the usual intro update exercise: Go to your [JupyterHub](https://maine.cloudbank.2i2c.cloud/)
 and pull the latest version of the class github repository.
 
 ??? note "Commands to pull the latest version of the class repository"
