@@ -21,18 +21,17 @@ of the class github repository.
 
 - How does a random forest learn a species–environment relationship from presence and background cells?
 - Why can a random train/test split overstate performance at unsampled locations?
-- What happens when we train in southern Maine and test in northern Maine, then reverse the regions?
-- How can we identify environmental conditions outside the training sample, and why are predictions there harder to trust?
-- What can disagreement between two regional models tell us about model uncertainty?
+- How does prediction error change when we add precipitation to a temperature-only model?
+- Why must we keep the same training and test cells when comparing predictor sets?
 - Which climate variables does the forest use most, and does importance imply an ecological cause?
 - Why is a presence/background suitability score different from a probability of occurrence?
 
 ## Concepts
 
 - Train/test splitting
-- Spatial cross-validation
-- Environmental extrapolation and novelty
-- Model uncertainty
+- Comparing one-variable and multiple-variable models
+- Mean absolute error (MAE)
+- Biological reasoning for predictor selection
 - Variable importance
 
 ## Python Tools
@@ -49,16 +48,18 @@ of the class github repository.
 Students build a presence/background SDM for a Maine amphibian using
 `scikit-learn`'s `RandomForestRegressor` and the supplied occurrence–climate
 table and Maine bioclimatic raster stack. In short, guided steps, they
-train a forest, test it on withheld cells, map suitability, and plot
-variable importance. A north/south comparison introduces spatial
-cross-validation, unfamiliar temperatures, and disagreement between models.
+first train a forest using annual mean temperature (`bio_1`) and evaluate
+MAE on withheld cells. They add annual precipitation (`bio_12`) and
+precipitation seasonality (`bio_15`), refit using the same training cells,
+and compare MAE on the same test cells. They then map suitability and
+plot variable importance for the three-variable model.
 
 - [Lab 07: Machine Learning SDMs](../labs/lab07-MachineLearningSDM.ipynb)
 
 ## Assignment
 
 Repeat the workflow for a chosen amphibian species, justify predictor
-choices, and compare random testing with testing in a different region.
+roles, and compare the BIO1-only and three-variable models on the same test cells.
 Submit a completed notebook with maps, short interpretations, and one
 saved suitability raster. Use the lab's model settings throughout.
 
