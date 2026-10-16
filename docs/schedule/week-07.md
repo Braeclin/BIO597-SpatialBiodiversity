@@ -12,27 +12,27 @@ biodiversity on heterogeneous landscapes"](https://doi.org/10.1016/j.rala.2020.0
 
 # Lab Exercise: Building a more complete SDM w/ Machine Learning
 
+## Core Questions
+
+- How does this 'machine learning' stuff actually work?
+- How does a random forest learn a species–environment relationship?
+- How does prediction error change when we add more environmental variables?
+- Which bioclim variables does the ML model use most, and does importance imply an ecological cause?
+
+## Concepts
+
+- Features vs Targets (machine learning jargon for predictor vs response)
+- Decision Trees
+- Train/test data splitting
+- Comparing one-variable and multiple-variable models
+- Prediction evaluation; Mean absolute error (MAE)
+- Variable importance
+
+* [A visual introduction to machine learning SDMs](../lectures/Lecture07-MachineLearningSDM.html)
 
 * Next, the usual intro update exercise: Go to your
 [JupyterHub](https://maine.cloudbank.2i2c.cloud/) and pull the latest version
 of the class github repository.
-
-## Core Questions
-
-- How does a random forest learn a species–environment relationship from presence and background cells?
-- Why can a random train/test split overstate performance at unsampled locations?
-- How does prediction error change when we add precipitation to a temperature-only model?
-- Why must we keep the same training and test cells when comparing predictor sets?
-- Which climate variables does the forest use most, and does importance imply an ecological cause?
-- Why is a presence/background suitability score different from a probability of occurrence?
-
-## Concepts
-
-- Train/test splitting
-- Comparing one-variable and multiple-variable models
-- Mean absolute error (MAE)
-- Biological reasoning for predictor selection
-- Variable importance
 
 ## Python Tools
 
