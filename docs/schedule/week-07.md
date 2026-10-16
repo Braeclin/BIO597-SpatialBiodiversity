@@ -64,6 +64,7 @@ roles, and compare the BIO1-only and three-variable models on the same test cell
 Submit a completed notebook with maps, short interpretations, and one
 saved suitability raster. Use the lab's model settings throughout.
 
+- Read [A visual introduction to machine learning](https://r2d3.us/visual-intro-to-machine-learning-part-1/) (It's short and fun).
 - [Assignment 07: Machine Learning SDMs](../assignments/Assignment-07-MachineLearningSDM.ipynb)
 
 **Paper discussion leader next week:** Next week we will need to do 2 papers
