@@ -28,13 +28,15 @@ biodiversity on heterogeneous landscapes"](https://doi.org/10.1016/j.rala.2020.0
 - Prediction evaluation; Mean absolute error (MAE)
 - Variable importance
 
+## Applied Lab
+
 * [A visual introduction to machine learning SDMs](../lectures/Lecture07-MachineLearningSDM.html)
 
 * Next, the usual intro update exercise: Go to your
 [JupyterHub](https://maine.cloudbank.2i2c.cloud/) and pull the latest version
 of the class github repository.
 
-## Python Tools
+### Python Tools
 
 - scikit-learn
 - GeoPandas
@@ -43,7 +45,6 @@ of the class github repository.
 - xarray
 - Matplotlib
 
-## Applied Lab
 
 Students build a presence/background SDM for a Maine amphibian using
 `scikit-learn`'s `RandomForestRegressor` and the supplied occurrence–climate
