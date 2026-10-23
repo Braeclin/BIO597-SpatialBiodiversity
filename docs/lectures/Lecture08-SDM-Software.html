@@ -60,7 +60,8 @@ body { background:var(--paper); }
 
 .cover .hero-image { object-fit:contain; }
 .mean-balance .image-wide { height:430px; }
-.auc-scores .image-wide { height:340px; }
+.auc-positive .image-wide { height:390px; }
+.auc-performance .image-wide { height:390px; }
 .reveal .plain-table { font-size:.84em; }
 .reveal .plain-table th,.reveal .plain-table td { padding:20px 16px; }
 .reveal .fold-table td { text-align:center; }
@@ -236,55 +237,23 @@ body { background:var(--paper); }
 <aside class="notes">Timing: 1 minute. This is one actual buffered split from a seeded subset of the Maine modeling points. Distances use projected meters. Buffered leave-one-out asks about prediction away from observed sites and can be computationally expensive when repeated. One held-out presence alone cannot define ROC AUC because it supplies no comparison background group. Any evaluation combining such predictions with background scores needs to describe whether that background was used in fitting; it is not automatically equivalent to holding out both classes. Source: https://earth-chris.github.io/elapid/module/train_test_split/#elapid.train_test_split.BufferedLeaveOneOut.</aside>
 </section>
 
-<section class="auc-scores">
-<div class="kicker">What does the model predict?</div>
-<h2>Each location receives a suitability score</h2>
-<p class="small">A <strong>score</strong> is the model’s predicted suitability for a location.<br>Higher values mean the model considers its climate more suitable.</p>
-<div class="image-wide"><img class="image-chart" src="assets/Lecture08-ranking-scores.png" alt="Six invented model predictions on a suitability scale from zero to one: recorded presences score 0.9, 0.8 and 0.6; background locations score 0.7, 0.4 and 0.2."></div>
-<p class="callout">Do locations with recorded frogs tend to receive higher scores than background locations?</p>
-<p class="caption">Illustrative predictions from 0 to 1. A score of 0.8 does not mean an 80% chance of occurrence.</p>
-<aside class="notes">Timing: 1.5 minutes. Begin with the suitability map shown earlier: each raster cell receives a numerical prediction from the fitted model using that cell’s climate. We can also obtain a prediction for every held-out occurrence and background location. Here score means that model output, not the AUC used to evaluate it. The six invented values will stay the same throughout the next slides. Filled teal points are recorded presences; open coral points are sampled background, where occurrence is unknown. Higher means more suitable under the model. The displayed 0–1 scale is a toy example of transformed suitability output, not the normalized weights in the entropy example, and not an established probability of occupancy. These values are not fitted pickerel-frog results. Source for MaxEnt output interpretation: https://doi.org/10.1111/j.1472-4642.2010.00725.x.</aside>
+<section class="auc-positive">
+<div class="kicker">Evaluating the frog model</div>
+<h2>Which sites does the model call suitable?</h2>
+<div class="image-wide"><img class="image-chart" src="assets/Lecture08-positive-predictions.png" alt="A cutoff at suitability score 0.5 separates predicted unsuitable from predicted suitable sites. Three recorded frogs lie above the cutoff, labeled TP, and one below, labeled FN. One background site lies above the cutoff, labeled FP, and three below, labeled TN."></div>
+<p class="small"><strong>True positives (TP):</strong> recorded frogs predicted suitable — 3 of 4.<br><span class="coral"><b>False positives (FP):</b></span> background sites predicted suitable — 1 of 4.</p>
+<p class="caption">*For presence/background AUC, background serves as the “negative” class. These are not confirmed absences.</p>
+<aside class="notes">Timing: 1.5 minutes. Lead with the figure. Each dot is a location and its horizontal position is the model’s predicted suitability, or score. Higher means more suitable under the model, not a calibrated probability of occurrence. The cutoff turns this continuous prediction into a positive (suitable) or negative (unsuitable) label. At 0.5, three of four recorded frogs qualify: true-positive rate 75%. One of four background sites qualifies: false-positive rate 25%, using background as the negative class. FN means a recorded frog predicted unsuitable, a missed presence. TN means a background site predicted unsuitable. Ask students to imagine sliding the dashed cutoff to the left: more sites qualify, increasing the fractions of true and false positives. This change traces the ROC curve on the next slide. These eight predictions are invented to teach the calculation. With confirmed absence data, a false positive would mean predicting suitable at an observed absence. Here background occupancy is unknown, so “false positive” is a conventional evaluation label, not a demonstrated ecological mistake. Source: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html.</aside>
 </section>
 
-<section>
-<div class="kicker">Comparing predictions</div>
-<h2>Does a recorded site get the higher score?</h2>
-<p class="small"><strong>Ranking</strong> means ordering sites from higher to lower predicted suitability.<br>A site scoring 0.9 ranks above a site scoring 0.7.</p>
-<table class="rank-table"><thead><tr><th>Recorded-site score</th><th>Background 0.7</th><th>Background 0.4</th><th>Background 0.2</th></tr></thead><tbody>
-<tr><th>0.9</th><td>Higher</td><td>Higher</td><td>Higher</td></tr>
-<tr><th>0.8</th><td>Higher</td><td>Higher</td><td>Higher</td></tr>
-<tr><th>0.6</th><td class="miss">Lower</td><td>Higher</td><td>Higher</td></tr>
-</tbody></table>
-<p class="equation">The recorded site scores higher in <strong>8 of 9 pairs</strong>.<br>This gives <strong>AUC = 8 ÷ 9 ≈ 0.89</strong>.</p>
-<p class="caption">AUC summarizes this ordering: 1 = every pair, 0.5 ≈ chance ordering.</p>
-<aside class="notes">Timing: 1.5 minutes. Read one table cell aloud before scanning the table: compare the recorded site scoring 0.9 with the background site scoring 0.7. The recorded site gets the higher suitability prediction. Repeat for all three backgrounds and all three recorded sites. Only the 0.6 versus 0.7 pair goes the other way. AUC summarizes the probability that a randomly selected presence receives a higher score than a randomly selected background point, giving half credit to ties. Here eight of nine equally weighted pairs succeed, so AUC is 0.89. An AUC below 0.5 means the ordering tends to go the opposite way. We are comparing presences with sampled background, not confirmed absences. Avoid calling a background prediction ecologically wrong, because background may contain occupied sites. Weighted AUC changes each comparison’s contribution; this table illustrates the unweighted case. AUC uses the order of the predictions rather than their absolute distances. Source: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html.</aside>
-</section>
-
-<section>
-<div class="kicker">From continuous predictions to a yes/no map</div>
-<h2>A cutoff decides which sites count as suitable</h2>
-<p class="small">Choose a score as the <strong>cutoff</strong>. Scores at or above it become “predicted suitable.”<br>At cutoff <strong>0.8</strong>, scores 0.9 and 0.8 qualify; 0.7 and lower do not.</p>
-<table class="plain-table"><thead><tr><th>Cutoff</th><th>Recorded sites<br>predicted suitable</th><th>Background sites<br>predicted suitable</th></tr></thead><tbody>
-<tr><td>0.8</td><td>2 of 3 (67%)</td><td>0 of 3 (0%)</td></tr>
-<tr><td>0.5</td><td>3 of 3 (100%)</td><td>1 of 3 (33%)</td></tr>
-<tr><td>0.2</td><td>3 of 3 (100%)</td><td>3 of 3 (100%)</td></tr>
-</tbody></table>
-<p class="callout">A lower cutoff labels more places suitable, including more background sites.</p>
-<p class="caption">The cutoff changes the yes/no labels. It leaves the model’s original suitability scores unchanged.</p>
-<aside class="notes">Timing: 1.5 minutes. The cutoff cuts the continuous suitability scale into two groups; it does not delete data or refit the model. Imagine coloring all raster cells with scores of at least 0.8 as suitable, and the remainder as unsuitable. This is a chosen decision rule, not a discovered biological boundary. Use the same six predictions: presences 0.9, 0.8, 0.6 and background 0.7, 0.4, 0.2. Walk through the 0.8 row, then lower the cutoff to 0.5. We now include all recorded sites, but also the 0.7 background site. At 0.2 every site qualifies. The next slide plots these percentages against each other. Background is not a confirmed absence, so the right column cannot be interpreted as known ecological errors. AUC itself does not require selecting one cutoff. Any practical cutoff chosen using data should be selected within training/validation data, leaving final test data for evaluation. Source: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html.</aside>
-</section>
-
-<section>
-<div class="kicker">Connecting the table to a curve</div>
-<h2>The ROC curve tries every possible cutoff</h2>
-<div class="two-col narrow-left"><div>
-<p class="question">Each point on the curve represents a cutoff.</p>
-<p class="small">At <strong>0.8</strong>: include 67% of recorded sites and 0% of background.</p>
-<p class="small">At <strong>0.5</strong>: include 100% of recorded sites and 33% of background.</p>
-<p class="small">The shaded <strong>area under the curve (AUC)</strong> is 0.89, matching our 8-of-9 comparison.</p>
-</div><img class="image-side" src="assets/Lecture08-roc-explained.png" alt="ROC curve from the same six predictions. The horizontal axis is the percentage of background predicted suitable; the vertical axis is the percentage of recorded sites predicted suitable. Cutoff 0.8 gives 0% and 67%, and cutoff 0.5 gives 33% and 100%. The shaded area is 0.89."></div>
-<p class="caption">Curves nearer the upper-left corner include more recorded sites while including less background.</p>
-<aside class="notes">Timing: 1.5 minutes. Locate cutoff 0.8 in the previous table and then on the graph: zero background sites qualify, so x is 0%; two of three recorded sites qualify, so y is 67%. Repeat for 0.5: x is 33%, y is 100%. Moving through all possible cutoffs traces the ROC curve. With a finite set of predictions, several cutoffs may produce the same point. ROC stands for receiver operating characteristic; focus on the axes rather than memorizing the name. The diagonal represents chance ordering. The area under this curve equals the pairwise AUC introduced earlier. Percentages on the axes run from 0% to 100%, equivalent to fractions from 0 to 1; the normalized area ranges from 0 to 1. The conventional false-positive rate treats background as the negative label, but background is not confirmed absence. Source: https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html.</aside>
+<section class="auc-performance">
+<div class="kicker">Comparing models across all cutoffs</div>
+<h2>Good predictions find frogs with fewer false alarms</h2>
+<div class="image-wide"><img class="image-chart" src="assets/Lecture08-roc-performance.png" alt="Three illustrative ROC panels labeled Good, Medium and Bad (chance), with shaded AUC values 0.95, 0.75 and 0.50. Each plots true-positive rate against false-positive rate. The good curve approaches the upper-left corner, the medium curve bends moderately above the diagonal, and the bad curve follows the chance diagonal."></div>
+<p class="small">Moving the cutoff traces each <strong>ROC curve</strong>. Toward the upper left: more true positives, fewer false positives.</p>
+<p class="callout"><strong>AUC = area under the curve.</strong> Larger areas mean better separation of recorded frogs from background.</p>
+<p class="caption">Illustrative curves, not fitted results. “Good,” “medium” and “bad” describe these examples, not universal AUC thresholds.</p>
+<aside class="notes">Timing: 1.5 minutes. Lead with the three panels. The vertical axis is the fraction of recorded frogs predicted suitable (true-positive rate, TP divided by TP plus FN). The horizontal axis is the fraction of background sites predicted suitable (false-positive rate, FP divided by FP plus TN). Every cutoff supplies one pair of rates. A good curve rises steeply: we recover many frogs before labeling much background suitable. The medium model needs more false positives to recover the same fraction of frogs. The bad example follows the diagonal: its predictions separate recorded sites and background no better than chance. The shaded area summarizes the curve, ranging from zero to one. Perfect separation gives AUC 1; chance ordering gives 0.5; systematically reversed predictions can fall below 0.5. AUC does not mean the percent of sites correctly classified or the probability of finding a frog. These are smooth theoretical curves with analytically known AUCs of 0.95, 0.75 and 0.50, not the course model’s results or universal grading categories. AUC depends on the test locations and sampled background, leading into the next slide’s random/spatial comparison. Background serves as the negative class here, rather than confirmed absences. Reproducible figures: assets/Lecture08-build-figures.py. Source: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html.</aside>
 </section>
 
 <section>
