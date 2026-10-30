@@ -205,14 +205,6 @@ body { background:var(--paper); }
 <aside class="notes">Timing: 1.5 minutes. Distinguish two uses of importance: OOB permutation importance allocates predictive skill among predictors, while decreases in tree squared-error impurity distribute that allocation along each predictor. With the default density_correction=True, the smoothed split mass is divided by the smoothed observed predictor density for each response, with a floor on the denominator. This corrects uneven environmental coverage in curve construction; it does not remove observation bias, population structure, or spatial dependence. Gaussian smoothing and conditional permutations differ from R gradientForest. Sources: pyGF README Method; general synthesis principle in Ellis et al. 2012. The curves are conceptual rather than numeric transformations of the displayed rug. Coral dashed lines track the same interval through the diagram. Useful split mass is smoothed, corrected for sampling density, integrated, and scaled to allocated importance before averaging across contributing SNPs. Keep the detailed normalization in narration; use the image to explain the transition from a local peak to a cumulative rise.</aside>
 </section>
 
-<section id="turnover-intuition" class="visual-slide">
-<div class="kicker">Reading a cumulative curve</div>
-<h2>Steep means rapid change; height accumulates it</h2>
-<div class="image-wide"><img class="image-chart" src="assets/Lecture09-turnover-explained.png" alt="Invented example: mean dosage rises for SNP A and falls for SNP B near 10 to 12 degrees Celsius. Their shared turnover summary rises steeply across that interval and stays cumulative."></div>
-<p class="small">Opposite allele-response directions can contribute to the same turnover peak.</p>
-<aside class="notes">Timing: 1.5 minutes. These lines are invented teaching values, not fitted partial dependence curves or output from the split aggregation algorithm. Both loci change rapidly in the same part of the gradient despite opposite allele directions. Accumulation cannot decrease because the summary collects nonnegative mass. A high flat plateau indicates change has already accumulated, not rapid local change at the plateau. Ask where two equal-sized temperature differences would produce the largest difference in transformed coordinates.</aside>
-</section>
-
 <section id="curves-results" class="visual-slide">
 <div class="kicker">The fitted example</div>
 <h2>Read the location and magnitude of turnover</h2>
@@ -238,14 +230,6 @@ body { background:var(--paper); }
 <aside class="notes">Timing: 1 minute. This actual fit map uses the same buffered raster region as the lab, at every fourth cell for plotting. The sites are overlays, not validation data. The map is one predictor coordinate, not total local turnover rate. Flat high values can be cumulative plateaus. A boundary in transformed values can highlight a geographic transition associated with modeled environmental differences. Source: course Lab09 and pyGF spatial/plotting methods.</aside>
 </section>
 
-<section id="extrapolation" class="visual-slide">
-<div class="kicker">Map coverage</div>
-<h2>Mapped pixels can still be poorly supported</h2>
-<div class="image-wide"><img class="image-chart" src="assets/Lecture09-coverage-cartoon.svg" alt="Three diagrams show missing raster cells being masked, a fitted curve clamped beyond its training range, and a novel temperature–rainfall combination inside both individual predictor ranges."></div>
-<p class="visual-takeaway">Missing data, range limits, and unfamiliar climate combinations need different interpretations.</p>
-<p class="caption">Schematic examples. A smooth map is not an uncertainty map or a geographic transfer test.</p>
-<aside class="notes">Timing: 1 minute. Clamping is an implementation rule: values below and above fitted ranges receive boundary values, so an extreme climate does not force the curve to keep rising. It is not evidence that real genetic change stops. Even univariate range checks miss novel multivariate combinations. The geographic buffer selects an output extent; it is not a biological dispersal radius. No future climate projection or genetic offset estimate is part of this lab. In the right panel the outlined query point lies inside the individual ranges but away from the observed climate combinations. The environmental grid and scatterplots are invented. Use the middle panel to point out that clamped plateaus are a method boundary behavior, not evidence of a biological plateau.</aside>
-</section>
 
 <section id="pca" class="visual-slide">
 <div class="kicker">Summarizing nineteen turnover coordinates</div>

@@ -5,7 +5,7 @@
 <line x1="65" y1="356" x2="65" y2="126" stroke="#18212b" stroke-width="2"/>
 <line x1="65" y1="356" x2="350" y2="356" stroke="#18212b" stroke-width="2"/>
 <text x="207.5" y="390" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#52606d" text-anchor="middle">Environmental value →</text>
-<text x="38" y="241.0" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#52606d" text-anchor="middle" transform="rotate(-90 38 241.0)"></text>
+<text x="38" y="241.0" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#52606d" text-anchor="middle" transform="rotate(-90 38 241.0)">Split improvement</text>
 <line x1="79.0" y1="352" x2="79.0" y2="317" stroke="#087e8b" stroke-width="4"/>
 <line x1="115.4" y1="352" x2="115.4" y2="294" stroke="#087e8b" stroke-width="4"/>
 <line x1="151.8" y1="352" x2="151.8" y2="271" stroke="#087e8b" stroke-width="4"/>

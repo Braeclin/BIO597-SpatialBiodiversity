@@ -295,7 +295,7 @@ def splits():
     for i,title in enumerate(titles):
         x=65+i*438
         d.text(x+140,45,title,25,weight=700,anchor='middle')
-        d.axes(x,356,285,230,'Environmental value →','' if i==0 else 'Turnover mass' if i==1 else 'Cumulative importance')
+        d.axes(x,356,285,230,'Environmental value →','Split improvement' if i==0 else 'Turnover mass' if i==1 else 'Cumulative importance')
         if i==0:
             values=[.05,.18,.31,.40,.43,.46,.48,.49,.51,.53,.54,.56,.59,.68,.81,.94]
             for j,v in enumerate(values):
