@@ -1,0 +1,4 @@
+evaluation,unweighted_auc,weighted_auc
+Training rows (all-data model),0.9557462853706653,0.9522730720430159
+"Checkerboard: train on train, evaluate test",0.7057575464811714,0.7039728254424191
+"Checkerboard reversed: train on test, evaluate train",0.6543274879248074,0.6661499638777133
